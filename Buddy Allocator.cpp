@@ -107,24 +107,36 @@ int main()
 {
     unordered_map<int,int> um;
     int m;
+    cout<<"Enter the Maximum Memory Size"<<endl;
     cin>>m;
     int x=ceil(log2(m));
     vector<pair<int,int > > v[x+1];
     v[x].push_back(make_pair(0,m-1));
-    int t=5;
+    int p;
+    cout<<"Enter the total number of requests needed to be performed"<<endl;
+    cin>>p;
+    int t=p;
     while(t--)
-{int r,y;
-cin>>r>>y;
-allocate(v,r,x+1,um);
-deallocate(y,v,um);
-vector<int>q(m,1);
-for(int i=0;i<x+1;i++){
-for(int j=0;j<v[i].size();j++){
-for(int k=v[i][j].first;k<=v[i][j].second;k++){
-q[k]=0;
+{
+     int r,y;
+     cout<<"Enter the size of the Memory needed to be allocated"<<endl;
+     cin>>r
+     cout<<"Enter the size of the Memory needed to be deallocated"<<endl;
+     cin>>y;
+     allocate(v,r,x+1,um);
+     deallocate(y,v,um);
+     vector<int>q(m,1);
+    for(int i=0;i<x+1;i++){
+    for(int j=0;j<v[i].size();j++){
+    for(int k=v[i][j].first;k<=v[i][j].second;k++)
+    {
+        q[k]=0;
+    }
 }
 }
-}
+     cout<<"Displaying the memory chunk after all allocations and deallocations"<<endl;
+     cout<<"0-> denotes the memory is allocated"<<endl;
+     cout<<"1-> denotes the memory is not allocated"<<endl;
 for(int i=0;i<m;i++){
 cout<<q[i]<<" ";
 
